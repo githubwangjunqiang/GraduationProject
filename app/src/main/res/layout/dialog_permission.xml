@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp">
+
+
+    <TextView
+        android:id="@+id/dialog_tvtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="车辆驶入"
+        android:textColor="@color/colorblack"
+        android:textSize="15dp" />
+
+
+    <EditText
+        android:id="@+id/dia_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="请输入车牌号"
+        android:maxLength="10"
+        android:paddingStart="10dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="20dp"
+        android:textColor="@color/colorblack"
+        android:textColorHint="#999999"
+        android:textSize="14dp" />
+    <EditText
+        android:id="@+id/dia_etid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="您可以选择输入车位编号，默认随机"
+        android:maxLength="10"
+        android:paddingStart="10dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="20dp"
+        android:textColor="@color/colorblack"
+        android:textColorHint="#999999"
+        android:textSize="14dp" />
+
+
+    <TextView
+        android:id="@+id/dia_tvbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/dra_stat_bian"
+        android:gravity="center_horizontal"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="确定"
+        android:textColor="@color/colorblack"
+        android:textSize="14dp" />
+
+</LinearLayout>

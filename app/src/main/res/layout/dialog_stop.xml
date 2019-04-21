@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp">
+
+
+    <TextView
+        android:id="@+id/dialog_tvtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="车辆："
+        android:textColor="@color/colorblack"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tv_d_bianhao"
+        android:textSize="13dp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:text="车位编号：A1"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_d_btimest"
+        android:textSize="13dp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:text="驶入时间：2001.01.01 00.00"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_d_btime"
+        android:textSize="13dp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:text="离开时间：2001.01.01 00.00"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_d_bdura"
+        android:textSize="13dp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:text="停车时长：10分钟"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_d_bprice"
+        android:textSize="13dp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:text="停车费用：1元"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <TextView
+        android:id="@+id/dia_tvbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/dra_stat_bian"
+        android:gravity="center_horizontal"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:text="确定"
+        android:textColor="@color/colorblack"
+        android:textSize="14dp" />
+
+</LinearLayout>
