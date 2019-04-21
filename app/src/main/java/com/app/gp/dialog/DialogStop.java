@@ -73,16 +73,17 @@ public class DialogStop extends Dialog {
         mCartData.setStopTime(millis);
         mTextViewStopTime.setText("离开时间：" + format);
 
-        long time = millis - mCartData.getStartTime();
-        mTextViewDuration.setText("停车时长：" + time / 1000 / 60 + "分钟");
-        if (time < 1000) {
+        long timeOld = millis - mCartData.getStartTime();
+        double divTime = DecimalCalculate.div(timeOld, 1000D, 3);
+        divTime = DecimalCalculate.div(divTime, 60D, 3);
+
+        mTextViewDuration.setText("停车时长：" + divTime + "分钟");
+        if (timeOld < 1000) {
             mCartData.setPrice(0);
             mTextViewPrice.setText("停车金额：0元");
             return;
         }
-        double second = DecimalCalculate.div(time, 1000D, 3);
-        double minute = DecimalCalculate.div(second, 60D, 3);
-        double hour = DecimalCalculate.div(minute, 60D, 3);
+        double hour = DecimalCalculate.div(divTime, 60D, 3);
         long price_cart = MainActivity.price_cart;
         double mul = DecimalCalculate.mul(price_cart, hour);
         mCartData.setPrice(mul);

@@ -184,10 +184,11 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
                         Toast.makeText(this, "该车位编号已有车辆", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (mPresenter.quiryCart(name) !=null) {
-                        Toast.makeText(this, "已有车辆号牌", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+
+                }
+                if (mPresenter.quiryCart(name) !=null) {
+                    Toast.makeText(this, "已有车辆号牌", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 CartData data = new CartData(name, System.currentTimeMillis());
                 mPresenter.startCart(id, data);

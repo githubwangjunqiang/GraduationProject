@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.app.gp.entity.CartData;
 import com.app.gp.entity.ListData;
+import com.app.gp.utils.DecimalCalculate;
 import com.app.gp.utils.SpUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -15,7 +16,9 @@ import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * @author wangjunqiang 2019/4/20 23:18
@@ -186,6 +189,7 @@ public class Presenter implements IPresenter {
         if (success) {
             saveList(cartDatas);
             mIMainActivity.get().refreshData(getCartDatas(), getPrice(), getTitle());
+            Toast.makeText(App.sContext, "车辆已经驶出", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(App.sContext, "结算失败", Toast.LENGTH_SHORT).show();
         }
@@ -219,23 +223,39 @@ public class Presenter implements IPresenter {
         int count = 0;
         double price = 0;
 
+        long startTimeOfDay = getStartTimeOfDay(null);
 
         List<ListData> cartDatas = getCartDatas();
         for (int i = 0; i < cartDatas.size(); i++) {
             ListData data = cartDatas.get(i);
             List<CartData> dataData = data.getData();
             if (dataData != null) {
-                count += dataData.size();
                 for (CartData cartData : dataData) {
-                    if (cartData.isSuccess()) {
-                        price += cartData.getPrice();
+                    long startTime = cartData.getStartTime();
+                    long stopTime = cartData.getStopTime();
+                    if(startTime>startTimeOfDay){
+                        count++;
+                    }
+                    if (cartData.isSuccess()&&stopTime>startTimeOfDay) {
+                        price =DecimalCalculate.add(price,cartData.getPrice());
                     }
                 }
             }
         }
         mIMainActivity.get().showStatistics(count, price);
     }
-
+    //获取当天（按当前传入的时区）00:00:00所对应时刻的long型值
+    private long getStartTimeOfDay(String timeZone) {
+        String tz = TextUtils.isEmpty(timeZone) ? "GMT+8" : timeZone;
+        TimeZone curTimeZone = TimeZone.getTimeZone(tz);
+        Calendar calendar = Calendar.getInstance(curTimeZone);
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTimeInMillis();
+    }
     @Override
     public void clearDatas() {
         boolean b = SpUtils.clearCommit(App.sContext);

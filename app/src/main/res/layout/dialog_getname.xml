@@ -6,7 +6,7 @@
     android:layout_gravity="center"
     android:layout_marginStart="30dp"
     android:layout_marginEnd="30dp"
-    android:background="#ffffff"
+    android:background="@drawable/dialog_back"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingTop="10dp"
