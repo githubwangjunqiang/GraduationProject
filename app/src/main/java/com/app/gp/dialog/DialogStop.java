@@ -76,14 +76,14 @@ public class DialogStop extends Dialog {
         long timeOld = millis - mCartData.getStartTime();
         double divTime = DecimalCalculate.div(timeOld, 1000D, 3);
         divTime = DecimalCalculate.div(divTime, 60D, 3);
-
-        mTextViewDuration.setText("停车时长：" + divTime + "分钟");
-        if (timeOld < 1000) {
-            mCartData.setPrice(0);
-            mTextViewPrice.setText("停车金额：0元");
-            return;
-        }
         double hour = DecimalCalculate.div(divTime, 60D, 3);
+        hour = Math.max(1, hour);
+        mTextViewDuration.setText("停车时长：" + hour + "小时");
+//        if (timeOld < 1000) {
+//            mCartData.setPrice(0);
+//            mTextViewPrice.setText("停车金额：0元");
+//            return;
+//        }
         long price_cart = MainActivity.price_cart;
         double mul = DecimalCalculate.mul(price_cart, hour);
         mCartData.setPrice(mul);

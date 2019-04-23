@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_main" />
+        <activity
             android:name=".StartActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_start">

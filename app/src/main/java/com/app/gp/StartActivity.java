@@ -41,7 +41,7 @@ public class StartActivity extends AppCompatActivity {
      * 启动主页
      */
     private void openMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         finish();
         overridePendingTransition(R.anim.main_in, R.anim.start_out);
     }

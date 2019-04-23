@@ -26,6 +26,10 @@ import java.util.TimeZone;
 public class Presenter implements IPresenter {
 
     /**
+     * 车位编号
+     */
+    public static final List<String> sListDataIds = Arrays.asList("A1", "B1", "A2", "B2", "A3", "B3");
+    /**
      * 数据库 key
      */
     private static final String DATA_KEY = "data_key";
@@ -41,10 +45,6 @@ public class Presenter implements IPresenter {
      * 界面的引用
      */
     private Reference<IMainActivity> mIMainActivity;
-    /**
-     * 车位编号
-     */
-    public static final List<String> sListDataIds = Arrays.asList("A1", "A2", "A3", "B1", "B2", "B3");
 
 
     public Presenter(IMainActivity iMainActivity) {
@@ -233,17 +233,18 @@ public class Presenter implements IPresenter {
                 for (CartData cartData : dataData) {
                     long startTime = cartData.getStartTime();
                     long stopTime = cartData.getStopTime();
-                    if(startTime>startTimeOfDay){
+                    if (startTime > startTimeOfDay) {
                         count++;
                     }
-                    if (cartData.isSuccess()&&stopTime>startTimeOfDay) {
-                        price =DecimalCalculate.add(price,cartData.getPrice());
+                    if (cartData.isSuccess() && stopTime > startTimeOfDay) {
+                        price = DecimalCalculate.add(price, cartData.getPrice());
                     }
                 }
             }
         }
         mIMainActivity.get().showStatistics(count, price);
     }
+
     //获取当天（按当前传入的时区）00:00:00所对应时刻的long型值
     private long getStartTimeOfDay(String timeZone) {
         String tz = TextUtils.isEmpty(timeZone) ? "GMT+8" : timeZone;
@@ -256,6 +257,7 @@ public class Presenter implements IPresenter {
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTimeInMillis();
     }
+
     @Override
     public void clearDatas() {
         boolean b = SpUtils.clearCommit(App.sContext);
